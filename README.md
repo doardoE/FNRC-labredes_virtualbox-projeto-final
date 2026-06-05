@@ -7,10 +7,10 @@ Este projeto se baseia nos requisitos propostos pelo professor [Alaelson Jatobá
 
 | Nome | Usuário da VM |
 |---|---|
-| Henrique Cavalcanti de Carvalho | henrique.carvalho |
-| Andrey Joshua Guerreiro Araujo | andrey.araujo |
-| Eduardo Pereira Calado | eduardo.calado |
-| Cirilo Dulcesil Silva | cirilo.silva |
+| Henrique Cavalcanti de Carvalho | henrique_carvalho |
+| Andrey Joshua Guerreiro Araujo | andrey_araujo |
+| Eduardo Pereira Calado | eduardo_calado |
+| Cirilo Dulcesil Silva | cirilo_silva |
 
 ## Visão Geral
 Este documento descreve o passo a passo para montar um ambiente de rede virtualizado com 8 máquinas virtuais Ubuntu Server distribuídas em 4 computadores físicos (2 VMs por PC), usando o VirtualBox. A estratégia adotada é:
@@ -54,30 +54,26 @@ Configuração mínima utilizada em cada máquina virtual:
 | Parâmetro | Valor |
 |---|---|
 |Sistema Operacional | Ubuntu Server 22.04 LTS |
-|Memória RAM | 1536 MB (1,5 GB) |
+|Memória RAM | 768 MB |
 |Processadores | 1 vCPU |
-|Disco | 10 GB (VDI, alocação dinâmica)|
+|Disco | 25 GB (VDI, alocação dinâmica)|
 |Adaptador de rede | Rede Interna (labredes) - modo bridge entre PCs |
 
 ### Pré-requisitos
 
 - VirtualBox instalado nos 4 PCs
-- ISO do Ubuntu Server 22.04 LTS disponível (baixar em [ubuntu.com/download/server](https://ubuntu.com/download/server))
+- ISO do Ubuntu Server 26.04 LTS disponível (baixar em [ubuntu.com/download/server](https://ubuntu.com/download/server))
 - Acesso à pasta compartilhada no Google Drive do grupo
 - Conexão de rede entre os 4 PCs (via cabo ou switch)
 
-## Etapas do Projeto Passo a Passo
+## Partes do Projeto
 
-A documentação detalhada de cada etapa será disponibilizada nos links abaixo à medida que as atividades forem sendo concluídas.
+A documentação detalhada de cada parte do projeto está organizada nos links abaixo.
 
-| Etapa | Descrição | Link |
+| Parte | Descrição | Link |
 |--------|-----------|------|
-| Etapa 1 | Inicialização e Construção da VM Matriz | [Disponível](./etapas/etapa-1.md) |
-| Etapa 2 | Em breve | Em breve |
-| Etapa 3 | Em breve | Em breve |
-| Etapa 4 | Em breve | Em breve |
-| Etapa 5 | Em breve | Em breve |
-
+| Parte 1 | Inicialização e Construção da VM Matriz | [Disponível](./passo-a-passo/parte-1.md) |
+| Parte 2 | Configuração Individual das Máquinas Virtuais e Validação da Rede | Em breve |
 
 ## Considerações Finais
 
