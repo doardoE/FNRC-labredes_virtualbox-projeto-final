@@ -12,10 +12,22 @@ Este projeto se baseia nos requisitos propostos pelo professor [Alaelson Jatobá
 | Eduardo Pereira Calado | eduardo.calado |
 | Cirilo Dulcesil Silva | cirilo.silva |
 
-## Configurações de Rede
+## Visão Geral
+Este documento descreve o passo a passo para montar um ambiente de rede virtualizado com 8 máquinas virtuais Ubuntu Server distribuídas em 4 computadores físicos (2 VMs por PC), usando o VirtualBox. A estratégia adotada é:
 
-### Configurações das Interfaces de Rede
+- Criar uma VM principal (template), configurar tudo nela.
+- Clonar a VM principal 7 vezes com MACs distintos.
+- Configurar cada clone com o IP e hostname corretos.
+- Exportar as 8 VMs como .ova para uma pasta compartilhada no Google Drive.
+- No dia da entrega, cada integrante importa as VMs do seu PC e executa.
+
+### Configurações de Rede e Interface
+**Subrede do Grupo 9**: `192.168.26.128/28`
+
 - IP da Subrede: `192.168.26.128`
+- Máscara de rede: `/28 -> 255.255.255.240`
+- Primeiro host utilizável: `192.168.26.129`
+- Último host utilizável: `192.168.26.142`
 - IP de Broadcast: `192.168.26.143`
 - Domínio (zona): `grupo9.bsi-26-1.maceio.lab`
 - Interface de rede: `ens160`
@@ -33,21 +45,39 @@ Abaixo estão as informações atreladas a cada VM, contendo o nome, IP e FQDN:
 | G9-PC4-VM1 | 192.168.26.135 | g9-pc4-vm1.grupo9-bsi-26-1.maceio.lab |
 | G9-PC4-VM2 | 192.168.26.136 | g9-pc4-vm2.grupo9-bsi-26-1.maceio.lab |
 
-## Etapas do Projeto
+Observação: A máscara /28 reserva 4 bits para hosts, totalizando 16 endereços (14 utilizáveis).
+
+O acesso as VMS estão em uma pasta no [Google Drive](https://drive.google.com/drive/folders/1KK29zer7fWj-3HqPqjXxVhprqs--Jgyl?usp=drive_link)
+
+### Hardware das VMs
+Configuração mínima utilizada em cada máquina virtual:
+| Parâmetro | Valor |
+|---|---|
+|Sistema Operacional | Ubuntu Server 22.04 LTS |
+|Memória RAM | 1536 MB (1,5 GB) |
+|Processadores | 1 vCPU |
+|Disco | 10 GB (VDI, alocação dinâmica)|
+|Adaptador de rede | Rede Interna (labredes) - modo bridge entre PCs |
+
+### Pré-requisitos
+
+- VirtualBox instalado nos 4 PCs
+- ISO do Ubuntu Server 22.04 LTS disponível (baixar em [ubuntu.com/download/server](https://ubuntu.com/download/server))
+- Acesso à pasta compartilhada no Google Drive do grupo
+- Conexão de rede entre os 4 PCs (via cabo ou switch)
+
+## Etapas do Projeto Passo a Passo
 
 A documentação detalhada de cada etapa será disponibilizada nos links abaixo à medida que as atividades forem sendo concluídas.
 
 | Etapa | Descrição | Link |
 |--------|-----------|------|
-| Etapa 1 | Planejamento e configuração inicial da rede | Em breve |
-| Etapa 2 | Configuração do serviço DNS | Em breve |
-| Etapa 3 | Configuração do serviço DHCP | Em breve |
-| Etapa 4 | Configuração do servidor Web | Em breve |
-| Etapa 5 | Configuração dos demais serviços | Em breve |
-| Etapa 6 | Testes e validações | Em breve |
-| Etapa 7 | Considerações finais | Em breve |
+| Etapa 1 | Inicialização e Construção da VM Matriz | [Disponível](./etapas/etapa-1.md) |
+| Etapa 2 | Em breve | Em breve |
+| Etapa 3 | Em breve | Em breve |
+| Etapa 4 | Em breve | Em breve |
+| Etapa 5 | Em breve | Em breve |
 
----
 
 ## Considerações Finais
 
