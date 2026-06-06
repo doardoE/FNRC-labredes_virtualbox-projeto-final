@@ -68,12 +68,10 @@ Configuração mínima utilizada em cada máquina virtual:
 
 ## Partes do Projeto
 
-A documentação detalhada de cada parte do projeto está organizada nos links abaixo.
+A documentação detalhada de cada etapa do projeto pode ser acessada [Clicando Aqui!](./passo-a-passo.md).
 
-| Parte | Descrição | Link |
-|--------|-----------|------|
-| Parte 1 | Inicialização e Construção da VM Matriz | [Disponível](./passo-a-passo/parte-1.md) |
-| Parte 2 | Configuração Individual das Máquinas Virtuais e Validação da Rede | [Disponível](./passo-a-passo/parte-2.md) |
+## Script de Testes
+
 
 ## Considerações Finais
 
