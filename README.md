@@ -53,11 +53,11 @@ O acesso as VMS estão em uma pasta no [Google Drive](https://drive.google.com/d
 Configuração mínima utilizada em cada máquina virtual:
 | Parâmetro | Valor |
 |---|---|
-|Sistema Operacional | Ubuntu Server 22.04 LTS |
+|Sistema Operacional | Ubuntu Server 26.04 LTS |
 |Memória RAM | 768 MB |
 |Processadores | 1 vCPU |
 |Disco | 25 GB (VDI, alocação dinâmica)|
-|Adaptador de rede | Rede Interna (labredes) - modo bridge entre PCs |
+|Adaptador de rede | Modo bridge entre PCs |
 
 ### Pré-requisitos
 

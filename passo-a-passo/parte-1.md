@@ -166,8 +166,59 @@ sudo usermod -aG sudo cirilo_silva
 
 Justificativa: O projeto exige que todos os integrantes possuam contas em todas as instâncias virtuais. Ao criá-los na máquina matriz, evitamos a necessidade de rodar o comando adduser 32 vezes no dia da apresentação (4 usuários × 8 VMs).
 
+### 1.7 Configurar IP estático Rede na VM principal
 
-### 1.7 Ajustes Necessários Antes da Clonagem
+Verifique o nome do arquivo de configuração de rede gerenciado pelo Netplan:
+```bash
+sudo ls /etc/netplan/
+```
+
+Saída esperada:
+```bash
+00-installer-config.yaml
+```
+
+Edite o arquivo de configuração:
+```bash
+sudo nano /etc/netplan/00-installer-config.yaml
+```
+
+Altere o conteúdo para:
+```yaml
+network:
+  ethernets:
+    ens160:
+      dhcp4: false
+      dhcp6: false
+      match:
+        macaddress: 08:00:27:96:9d:7e # troque para o endereço MAC da VM
+      set-name: ens160
+      addresses:
+        - 192.168.26.129/28 # troque aqui para o ip estático da VM
+      routes:
+        - to: default
+          via: 192.168.26.129
+      nameservers:
+        addresses: [8.8.8.8, 8.8.4.4]
+        search: [grupo9.bsi-26-1.maceio.lab]
+  version: 2
+```
+
+Após salvar as alterações, aplique a configuração e verifique se a interface recebeu o endereço IP definido:
+```bash
+sudo netplan apply
+ifconfig -a
+```
+
+**O que os comandos fazem?**
+
+`ls /etc/netplan/`: identifica o arquivo de configuração de rede utilizado pelo sistema.
+`netplan apply`: aplica imediatamente as alterações realizadas no arquivo YAML.
+`ifconfig -a`: exibe as interfaces de rede e seus respectivos endereços IP.
+
+**Justificativa**: A utilização de endereços IP estáticos é necessária para garantir que cada máquina virtual mantenha sempre o mesmo endereço na rede. Isso facilita a configuração dos arquivos hosts, a comunicação entre as VMs, os testes de conectividade com ping e os acessos remotos via SSH, além de atender aos requisitos de endereçamento definidos para o projeto.
+
+### 1.8 Ajustes Necessários Antes da Clonagem
 
 Após a instalação completa do sistema operacional e dos serviços necessários para o projeto, foi observado um consumo médio de aproximadamente **205 MB** de memória RAM por máquina virtual. Considerando que os serviços utilizados no ambiente (SSH, configuração de rede e ferramentas de diagnóstico) possuem baixo consumo de recursos, optou-se por reduzir a memória alocada de **2 GB** para **768 MB** por VM. Essa configuração mantém uma margem confortável para a execução das atividades propostas e possibilita a execução simultânea de duas máquinas virtuais por computador, utilizando aproximadamente 1,5 GB de RAM no total.
 
@@ -181,7 +232,7 @@ Também foi necessário alterar o adaptador de rede de **NAT** para **Placa em M
 
 **Justificativa**: O modo Bridge conecta a máquina virtual diretamente à rede física do computador hospedeiro, permitindo que ela receba um endereço IP próprio e possa ser acessada por outros dispositivos da mesma rede. Essa configuração facilita os testes de conectividade e acesso remoto via SSH, além de permitir a comunicação entre as máquinas virtuais e outros computadores utilizados durante a apresentação e validação do projeto.
 
-### 1.7 Clonagem das Máquinas Virtuais
+### 1.9 Clonagem das Máquinas Virtuais
 
 Antes de iniciar a clonagem, deve-se habilitar a opção *"Gerar novos endereços MAC para todos os adaptadores de rede"*. Cada máquina virtual precisa possuir um endereço MAC único para evitar conflitos de identificação na rede e garantir o funcionamento correto dos serviços de comunicação.
 
