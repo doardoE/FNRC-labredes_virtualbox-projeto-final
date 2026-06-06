@@ -1,9 +1,9 @@
 # Projeto Final de Redes
-Instituto Federal de Educação, Ciência e Tecnologia de Alagoas
-Disciplina de Fundamentos de Redes de Computadores (FNRC)
-Professor: [Alaelson de castro jatobá Neto](https://github.com/alaelson)
-Turma 01 - Bacharelado em Sistemas de Informação - 2026.1
-Grupo 9 (nove)
+- Instituto Federal de Educação, Ciência e Tecnologia de Alagoas
+- Disciplina de Fundamentos de Redes de Computadores (FNRC)
+- Professor: [Alaelson de castro jatobá Neto](https://github.com/alaelson)
+- Turma 01 - Bacharelado em Sistemas de Informação - 2026.1
+- **Grupo 9 (nove)**
 
 Este projeto se baseia nos requisitos propostos pelo professor, podendo ser acessado [clicando aqui!](https://github.com/alaelson/labredes_virtualbox/tree/main/projeto-final)
 
