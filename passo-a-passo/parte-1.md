@@ -222,14 +222,14 @@ ifconfig -a
 Dentro do diretótio `/etc/hosts`, adicione o mapeamento abaixo de todas as VMS:
 
 ```bash
-192.168.26.129  g9-pc1-vm1  g9-pc1-vm1.grupo9.bsi-26-1.maceio.lab
-192.168.26.130  g9-pc1-vm2  g9-pc1-vm2.grupo9.bsi-26-1.maceio.lab
-192.168.26.131  g9-pc2-vm1  g9-pc2-vm1.grupo9.bsi-26-1.maceio.lab
-192.168.26.132  g9-pc2-vm2  g9-pc2-vm2.grupo9.bsi-26-1.maceio.lab
-192.168.26.133  g9-pc3-vm1  g9-pc3-vm1.grupo9.bsi-26-1.maceio.lab
-192.168.26.134  g9-pc3-vm2  g9-pc3-vm2.grupo9.bsi-26-1.maceio.lab
-192.168.26.135  g9-pc4-vm1  g9-pc4-vm1.grupo9.bsi-26-1.maceio.lab
-192.168.26.136  g9-pc4-vm2  g9-pc4-vm2.grupo9.bsi-26-1.maceio.lab
+192.168.26.129  g9-pc1-vm1.grupo9.bsi-26-1.maceio.lab  g9-pc1-vm1
+192.168.26.130  g9-pc1-vm2.grupo9.bsi-26-1.maceio.lab  g9-pc1-vm2
+192.168.26.131  g9-pc2-vm1.grupo9.bsi-26-1.maceio.lab  g9-pc2-vm1
+192.168.26.132  g9-pc2-vm2.grupo9.bsi-26-1.maceio.lab  g9-pc2-vm2
+192.168.26.133  g9-pc3-vm1.grupo9.bsi-26-1.maceio.lab  g9-pc3-vm1
+192.168.26.134  g9-pc3-vm2.grupo9.bsi-26-1.maceio.lab  g9-pc3-vm2
+192.168.26.135  g9-pc4-vm1.grupo9.bsi-26-1.maceio.lab  g9-pc4-vm1
+192.168.26.136  g9-pc4-vm2.grupo9.bsi-26-1.maceio.lab  g9-pc4-vm2
 ```
 
 **O que essa configuração faz?**
