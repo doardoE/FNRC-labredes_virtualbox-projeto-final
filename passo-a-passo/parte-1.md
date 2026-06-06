@@ -38,7 +38,7 @@ Com a VM em execução, o instalador do Ubuntu Server assume o controle da conso
 
 *<p align="center">Figura 4: Tela de carregamento do Kernel e execução dos scripts em segundo plano do instalador do Ubuntu Server.</p>*![Boot inicial do instalador via CLI](../img/etapa-1/creating-cli-first.png)
 
-Após o término dos procedimentos de instalação e o reboot automático do sistema, o terminal de texto é liberado. O acesso à console da VM Matriz é validado com sucesso inserindo o usuário administrador e a senha previamente configurados:
+Após o término dos procedimentos de instalação e o reboot automático do sistema, o terminal de texto é liberado. O acesso ao console da VM Matriz é validado com sucesso inserindo o usuário administrador e a senha previamente configurados:
 
 *<p align="center">Figura 5: Autenticação realizada com sucesso, exibindo o prompt de comando operativo do usuário admin.</p>*![Tela de login bem-sucedido no Ubuntu Server](../img/etapa-1/created-login.png)
 
@@ -47,7 +47,6 @@ Após o término dos procedimentos de instalação e o reboot automático do sis
 Verifique a configuração de idioma atual:
 
 ```bash
-locale
 localectl status
 ```
 
@@ -73,7 +72,7 @@ Continue dando OK nas opções restantes até o assistente fechar.
 
 **Justificativa:** O layout `br`/`abnt2` garante a utilização correta do teclado brasileiro no Ubuntu, permitindo a digitação adequada de caracteres acentuados e símbolos especiais. Após a reconfiguração, é necessário reiniciar o sistema para aplicar as alterações.
 
-após o reboot acesse a VM e teste se o teclado está devidademente configurado com localectl status e testando as teclas.
+Após o reboot, acesse a VM e teste se o teclado está devidademente configurado com `localectl status` e testando as teclas.
 
 *<p align="center">Figura 6: Saída das configurações de idioma e teclado após execução dos comandos.</p>*![Status de configuração de idioma e teclado](../img/etapa-1/teclado.png)
 
@@ -136,22 +135,20 @@ O resultado deve indicar que o serviço está com o status `active (running)`.
 
 ### 1.6 Criação dos Usuários
 
-Execute os comandos abaixo para criar os 4 usuários integrantes e adicioná-los ao grupo sudo:
-
-Os usuários padrão foram definidos como `< primeiro nome >.< último nome >`, no entando, o Ubuntu tem alerta de aviso sobre a utilização dessa convenção, por esse motivo, decidimos utilizar o snake_case sugerido, NAME_RAGEX. 
+Os usuários padrão foram definidos como `< primeiro nome >.< último nome >`, no entando, o Ubuntu emitiu um alerta sobre a utilização dessa convenção. Por esse motivo, decidimos utilizar o padrão `snake_case` sugerido, NAME_REGEX. 
 
 *<p align="center">Figura 9: Ubuntu reclamando da convenção de nomes.</p>*![Convenção de nome ruim](../img/etapa-1/reclame_name.png)
 
+Execute os comandos abaixo para criar os 4 usuários integrantes e adicioná-los ao grupo sudo:
 ```bash
 sudo adduser henrique_carvalho
 sudo adduser andrey_araujo
 sudo adduser eduardo_calado
 sudo adduser cirilo_silva
 ```
-Todos os usuários foram criados com a senha padrão:
-grupo9@2026
+Todos os usuários foram criados com a senha padrão:`grupo9@2026`
 
-Foi adicionado tbm privilégios de adminustrador sudo aos usuários:
+Foi adicionado também privilégios de adminustrador `sudo` aos usuários:
 ```bash
 sudo usermod -aG sudo henrique_carvalho
 sudo usermod -aG sudo andrey_araujo
@@ -164,7 +161,7 @@ sudo usermod -aG sudo cirilo_silva
 É possivel verificar também a pasta dos usuários:
 *<p align="center">Figura 11: Pasta no diretório /home dos usuários criados.</p>*![Criado os 4 usuários pertencentes aos alunos](../img/etapa-1/users.png)
 
-Justificativa: O projeto exige que todos os integrantes possuam contas em todas as instâncias virtuais. Ao criá-los na máquina matriz, evitamos a necessidade de rodar o comando adduser 32 vezes no dia da apresentação (4 usuários × 8 VMs).
+**Justificativa**: O projeto exige que todos os integrantes possuam contas em todas as instâncias virtuais. Ao criá-los na máquina matriz, evitamos a necessidade de rodar o comando adduser 32 vezes no dia da apresentação (4 usuários × 8 VMs).
 
 ### 1.7 Configurar IP estático Rede na VM principal
 
@@ -213,10 +210,33 @@ ifconfig -a
 **O que os comandos fazem?**
 
 `ls /etc/netplan/`: identifica o arquivo de configuração de rede utilizado pelo sistema.
+
 `netplan apply`: aplica imediatamente as alterações realizadas no arquivo YAML.
+
 `ifconfig -a`: exibe as interfaces de rede e seus respectivos endereços IP.
 
 **Justificativa**: A utilização de endereços IP estáticos é necessária para garantir que cada máquina virtual mantenha sempre o mesmo endereço na rede. Isso facilita a configuração dos arquivos hosts, a comunicação entre as VMs, os testes de conectividade com ping e os acessos remotos via SSH, além de atender aos requisitos de endereçamento definidos para o projeto.
+
+#### Configurar mapeamento de hosts
+
+Dentro do diretótio `/etc/hosts`, adicione o mapeamento abaixo de todas as VMS:
+
+```bash
+192.168.26.129  g9-pc1-vm1  g9-pc1-vm1.grupo9.bsi-26-1.maceio.lab
+192.168.26.130  g9-pc1-vm2  g9-pc1-vm2.grupo9.bsi-26-1.maceio.lab
+192.168.26.131  g9-pc2-vm1  g9-pc2-vm1.grupo9.bsi-26-1.maceio.lab
+192.168.26.132  g9-pc2-vm2  g9-pc2-vm2.grupo9.bsi-26-1.maceio.lab
+192.168.26.133  g9-pc3-vm1  g9-pc3-vm1.grupo9.bsi-26-1.maceio.lab
+192.168.26.134  g9-pc3-vm2  g9-pc3-vm2.grupo9.bsi-26-1.maceio.lab
+192.168.26.135  g9-pc4-vm1  g9-pc4-vm1.grupo9.bsi-26-1.maceio.lab
+192.168.26.136  g9-pc4-vm2  g9-pc4-vm2.grupo9.bsi-26-1.maceio.lab
+```
+
+**O que essa configuração faz?**
+
+O arquivo `/etc/hosts` permite associar nomes de máquinas a endereços IP localmente, sem a necessidade de um servidor DNS. Dessa forma, cada VM consegue localizar as demais utilizando seus nomes curtos (*hostname*) ou seus nomes completos (FQDN).
+
+**Justificativa**: O projeto exige a utilização de hostnames e domínios para comunicação entre as máquinas virtuais. O mapeamento no arquivo `/etc/hosts` garante a resolução de nomes dentro do ambiente virtualizado, permitindo a realização dos testes de conectividade (`ping`) e acesso remoto (SSH) utilizando os nomes definidos.
 
 ### 1.8 Ajustes Necessários Antes da Clonagem
 
