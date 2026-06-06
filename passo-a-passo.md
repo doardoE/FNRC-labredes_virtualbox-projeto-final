@@ -260,6 +260,8 @@ Antes de iniciar a clonagem, deve-se habilitar a opção *"Gerar novos endereço
 # Parte 2: Configurações específicas por VM
 Nesta seção será apresentada as modificações das configurações básicas feitas que devem ser específicas a cada VM, como o endereço IP e MAC.
 
+Repita essas configurações para cada VM de acordo com os dados especícos atrelado a ela.
+
 ### 2.1 Alteração do IP estático e MEC
 
 Inicialmente, identifique o endereço MAC atribuído à máquina virtual executando o comando:
@@ -271,7 +273,7 @@ ip link | grep ether
 
 `grep ether`: É um filtro de texto. Ele varre o que recebeu do pipe e exibe apenas as linhas que possuem a palavra "ether".
 
-*<p align="center">Figura 1: Endereço Mac da VM distribuida pelo VirtualBox.</p>*![Retorno do endereço MAC](./img/etapa-2/mac.png)
+*<p align="center">Figura 16: Endereço Mac da VM distribuida pelo VirtualBox.</p>*![Retorno do endereço MAC](./img/etapa-2/mac.png)
 
 Após identificar o endereço MAC e consultar a tabela de endereçamento do grupo para determinar o IP correspondente à VM, edite o arquivo de configuração da rede:
 
@@ -366,3 +368,7 @@ O script cobre as seguintes validações:
 **Relatório Final**
 
 Ao término da execução, o script imprime um relatório consolidado diretamente no terminal contendo o detalhamento de quais testes passaram, a quantidade exata de sucessos e o total de validações realizadas. Isso viabiliza uma auditoria rápida e minuciosa do estado de conformidade de cada VM.
+
+Abaixo está a saída do relatório de testes em ambiente local, com as 8 VMs executando em um único notebook:
+
+*<p align="center">Figura 17: Resultado do script de teste automatizado para o grupo 9.</p>*![Execução dos testes](./img/test.gif)
