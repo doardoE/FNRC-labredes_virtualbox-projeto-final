@@ -371,4 +371,4 @@ Ao término da execução, o script imprime um relatório consolidado diretament
 
 Abaixo está a saída do relatório de testes em ambiente local, com as 8 VMs executando em um único notebook:
 
-*<p align="center">Figura 17: Resultado do script de teste automatizado para o grupo 9.</p>*![Execução dos testes](./img/test.gif)
+*<p align="center">Figura 17: Resultado do script de teste automatizado para o grupo 9.</p>*![Execução dos testes](./img/tests.gif)
