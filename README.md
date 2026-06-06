@@ -73,7 +73,7 @@ A documentação detalhada de cada parte do projeto está organizada nos links a
 | Parte | Descrição | Link |
 |--------|-----------|------|
 | Parte 1 | Inicialização e Construção da VM Matriz | [Disponível](./passo-a-passo/parte-1.md) |
-| Parte 2 | Configuração Individual das Máquinas Virtuais e Validação da Rede | Em breve |
+| Parte 2 | Configuração Individual das Máquinas Virtuais e Validação da Rede | [Disponível](./passo-a-passo/parte-2.md) |
 
 ## Considerações Finais
 
