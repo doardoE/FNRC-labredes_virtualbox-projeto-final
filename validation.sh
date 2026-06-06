@@ -27,7 +27,7 @@ EXPECTED_IPS=("192.168.26.129" "192.168.26.130" "192.168.26.131" "192.168.26.132
 EXPECTED_HOSTS=("g9-pc1-vm1" "g9-pc1-vm2" "g9-pc2-vm1" "g9-pc2-vm2"
                 "g9-pc3-vm1" "g9-pc3-vm2" "g9-pc4-vm1" "g9-pc4-vm2")
 EXPECTED_DOMAIN="grupo9.bsi-26-1.maceio.lab"
-EXPECTED_USERS=("administrador" "henrique_carvalho" "andrey_araujo" "eduardo_calado" "cirilo_silva")
+EXPECTED_USERS=("administrador" "henrique.carvalho" "andrey.araujo" "eduardo.calado" "cirilo.silva")
 INTERFACE="ens160"
 
 section() { echo ""; echo -e "${BLUE}→ $1${NC}"; }
