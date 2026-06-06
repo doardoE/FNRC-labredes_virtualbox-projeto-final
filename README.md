@@ -1,16 +1,37 @@
-# FNRC-projeto-final
-Projeto Final de Fundamentos de Redes de Computadores - Turma bsi-26-1 (2026.1) - GRUPO 9
+# Projeto Final de Redes
+Instituto Federal de Educação, Ciência e Tecnologia de Alagoas
+Disciplina de Fundamentos de Redes de Computadores (FNRC)
+Professor: [Alaelson de castro jatobá Neto](https://github.com/alaelson)
+Turma 01 - Bacharelado em Sistemas de Informação - 2026.1
+Grupo 9 (nove)
 
-Este projeto se baseia nos requisitos propostos pelo professor [Alaelson Jatobá](https://github.com/alaelson), podendo ser acessado [clicando aqui!](https://github.com/alaelson/labredes_virtualbox/tree/main/projeto-final)
+Este projeto se baseia nos requisitos propostos pelo professor, podendo ser acessado [clicando aqui!](https://github.com/alaelson/labredes_virtualbox/tree/main/projeto-final)
+
+Este repositório pode ser acessado pelo link [github.com/doardoE/FNRC-projeto-final](https://github.com/doardoE/FNRC-projeto-final)
 
 ## Integrantes
 
 | Nome | Usuário da VM |
 |---|---|
-| Henrique Cavalcanti de Carvalho | henrique_carvalho |
-| Andrey Joshua Guerreiro Araujo | andrey_araujo |
-| Eduardo Pereira Calado | eduardo_calado |
-| Cirilo Dulcesil Silva | cirilo_silva |
+| Henrique Cavalcanti de Carvalho | henrique.carvalho |
+| Andrey Joshua Guerreiro Araujo | andrey.araujo |
+| Eduardo Pereira Calado | eduardo.calado |
+| Cirilo Dulcesil Silva | cirilo.silva |
+
+###  Credenciais das Máquinas Virtuais (VMs)
+
+Os usuários das VMs serão cadastrados em todas as máquinas com a seguinte senha padrão:
+* **Senha padrão:** `grupo9@2026`
+
+
+### Usuário Root do Sistema
+
+O acesso de administrador foi definido com as seguintes credenciais:
+
+```yaml
+user: administrador
+password: adminifal
+```
 
 ## Visão Geral
 Este documento descreve o passo a passo para montar um ambiente de rede virtualizado com 8 máquinas virtuais Ubuntu Server distribuídas em 4 computadores físicos (2 VMs por PC), usando o VirtualBox. A estratégia adotada é:
@@ -34,7 +55,7 @@ Este documento descreve o passo a passo para montar um ambiente de rede virtuali
 
 Abaixo estão as informações atreladas a cada VM, contendo o nome, IP e FQDN:
 
-| VM | IP | FQDN |
+| VM | IP | FQDN (hostname + domínio) |
 |---|---|---|
 | G9-PC1-VM1 | 192.168.26.129 | g9-pc1-vm1.grupo9-bsi-26-1.maceio.lab |
 | G9-PC1-VM2 | 192.168.26.130 | g9-pc1-vm2.grupo9-bsi-26-1.maceio.lab |
@@ -71,7 +92,26 @@ Configuração mínima utilizada em cada máquina virtual:
 A documentação detalhada de cada etapa do projeto pode ser acessada [Clicando Aqui!](./passo-a-passo.md).
 
 ## Script de Testes
+Os testes foram feitos de forma automatizada com o script [validation.sh](./validation.sh) executados nas VMs.
 
+
+```bash
+bash validation.sh
+```
+
+O script cobre testes locais da máquina virtual e de conectividade entre os nós:
+
+- **Rede** - verifica se o IP está na faixa `192.168.26.128/28`, se a máscara é `/28` e se a interface `ens160` está ativa
+- **Hostname** - verifica se o FQDN completo (`hostname -f`) contém o domínio `grupo9.bsi-26-1.maceio.lab` e se o `/etc/hostname` está correto
+- **Usuários** - verifica se os 5 usuários do grupo (`administrador`, `henrique.carvalho`, `andrey.araujo`, `eduardo.calado`, `cirilo.silva`) existem na VM
+- **`/etc/hosts`** - verifica se os 8 IPs da subrede estão mapeados no arquivo
+- **Ping por IP** - envia 1 pacote ICMP para cada um dos 8 IPs da rede e verifica resposta
+- **Ping por hostname e FQDN** - valida a resolução de nomes testando ping pelo hostname curto e pelo FQDN completo de cada VM
+- **SSH** - verifica se a porta 22 está acessível em cada nó da rede
+- **Netplan** - verifica se o arquivo de configuração de rede existe e se o IP é estático
+- **SSH Server local** - verifica se o serviço SSH está ativo na VM
+
+Ao final da execução é exibido um relatório consolidado no terminal com o total de testes que passaram, falharam e avisos gerados.
 
 ## Considerações Finais
 

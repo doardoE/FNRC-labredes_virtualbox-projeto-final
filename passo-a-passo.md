@@ -134,17 +134,15 @@ O resultado deve indicar que o serviço está com o status `active (running)`.
 
 ### 1.6 Criação dos Usuários
 
-Os usuários padrão foram definidos como `< primeiro nome >.< último nome >`, no entando, o Ubuntu emitiu um alerta sobre a utilização dessa convenção. Por esse motivo, decidimos utilizar o padrão `snake_case` sugerido, NAME_REGEX. 
-
-*<p align="center">Figura 9: Ubuntu reclamando da convenção de nomes.</p>*![Convenção de nome ruim](./img/etapa-1/reclame_name.png)
-
 Execute os comandos abaixo para criar os 4 usuários integrantes e adicioná-los ao grupo sudo:
 ```bash
-sudo adduser henrique_carvalho
-sudo adduser andrey_araujo
-sudo adduser eduardo_calado
-sudo adduser cirilo_silva
+sudo adduser --force-badname henrique.carvalho
+sudo adduser --force-badname andrey.araujo
+sudo adduser --force-badname eduardo.calado
+sudo adduser --force-badname cirilo.silva
 ```
+O parâmetro `--force-badname` é utilizado para que o Ubuntu não reclame do padrão de nomeclatura considerada ruim.*<p align="center">Figura 9: Ubuntu reclamando da convenção de nomes.</p>*![Convenção de nome ruim](./img/etapa-1/reclame_name.png)
+
 Todos os usuários foram criados com a senha padrão:`grupo9@2026`
 
 Foi adicionado também privilégios de adminustrador `sudo` aos usuários:
@@ -334,4 +332,37 @@ O que os comandos fazem?
 
 **Justificativa**: A definição de hostnames únicos é um requisito do projeto e facilita a identificação dos servidores durante os testes de conectividade, resolução de nomes e acessos remotos via SSH.
 
-# Parte 3: Testes de Conexão
+Dentro do diretótio `/etc/hosts` (*Mesma pasta em que definimos o mapeamento de todos os IPS das VMs*), altere o endereço de retorno abaixo de `localhost`:
+
+```bash
+172.0.0.1  localhost
+172.0.1.1  <hostname>.grupo9.bsi-26-1.maceio.lab  <hostname>
+
+# exemplo:
+172.0.1.1  g9-pc1-vm1.grupo9.bsi-26-1.maceio.lab  g9-pc1-vm1
+```
+
+# Parte 3: Testes e Evidências
+
+Os testes de configuração e conectividade das VMs foram realizados de forma automatizada. Para isso, foi adicionado ao diretório raiz de cada máquina o script [`validation.sh`](./validation.sh), encarregado de executar testes parametrizados específicos para o **Grupo 9**.
+
+O script cobre as seguintes validações:
+
+* **Rede:** Verifica se o endereço IP pertence à faixa `192.168.26.128/28`, se a máscara de sub-rede é `/28` e se a interface de rede `ens160` está ativa.
+* **Hostname:** Valida se o FQDN completo (`hostname -f`) contém o domínio correspondente (`grupo9.bsi-26-1.maceio.lab`) e se o arquivo `/etc/hostname` está configurado corretamente.
+* **Usuários:** Confirma se os 5 usuários mapeados para o grupo existem na VM:
+  * `administrador`
+  * `henrique.carvalho`
+  * `andrey.araujo`
+  * `eduardo.calado`
+  * `cirilo.silva`
+* **Arquivo `/etc/hosts`:** Garante que todos os 8 endereços IP da sub-rede estão devidamente mapeados no arquivo.
+* **Ping por IP:** Envia 1 pacote ICMP para cada um dos 8 IPs da rede para verificar a conectividade direta entre os nós.
+* **Ping por Hostname e FQDN:** Valida a resolução de nomes interna testando o comando `ping` tanto pelo hostname curto quanto pelo FQDN completo de cada VM.
+* **SSH:** Verifica se a porta 22 está aberta e respondendo a conexões em cada nó da rede.
+* **Netplan:** Certifica-se de que o arquivo de configuração do Netplan existe e que o IP configurado é estático.
+* **SSH Server Local:** Confirma se o serviço do servidor SSH (`sshd`) está ativo e em execução na máquina atual.
+
+**Relatório Final**
+
+Ao término da execução, o script imprime um relatório consolidado diretamente no terminal contendo o detalhamento de quais testes passaram, a quantidade exata de sucessos e o total de validações realizadas. Isso viabiliza uma auditoria rápida e minuciosa do estado de conformidade de cada VM.
