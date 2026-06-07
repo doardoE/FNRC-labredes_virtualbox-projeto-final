@@ -9,6 +9,8 @@ Este projeto se baseia nos requisitos propostos pelo professor, podendo ser aces
 
 Este repositório pode ser acessado pelo link [github.com/doardoE/FNRC-projeto-final](https://github.com/doardoE/FNRC-projeto-final)
 
+### O acesso as VMS estão em uma pasta no Google Drive, [Acesse clicando Aqui!](https://drive.google.com/drive/folders/1KK29zer7fWj-3HqPqjXxVhprqs--Jgyl?usp=drive_link)
+
 ## Integrantes
 
 | Nome | Usuário da VM |
@@ -67,8 +69,6 @@ Abaixo estão as informações atreladas a cada VM, contendo o nome, IP e FQDN:
 | G9-PC4-VM2 | 192.168.26.136 | g9-pc4-vm2.grupo9-bsi-26-1.maceio.lab |
 
 Observação: A máscara /28 reserva 4 bits para hosts, totalizando 16 endereços (14 utilizáveis).
-
-O acesso as VMS estão em uma pasta no [Google Drive](https://drive.google.com/drive/folders/1KK29zer7fWj-3HqPqjXxVhprqs--Jgyl?usp=drive_link)
 
 ### Hardware das VMs
 Configuração mínima utilizada em cada máquina virtual:
