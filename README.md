@@ -9,7 +9,7 @@ Este projeto se baseia nos requisitos propostos pelo professor, podendo ser aces
 
 Este repositório pode ser acessado pelo link [github.com/doardoE/FNRC-projeto-final](https://github.com/doardoE/FNRC-projeto-final)
 
-### O acesso as VMS estão em uma pasta no Google Drive, [Acesse clicando Aqui!](https://drive.google.com/drive/folders/1KK29zer7fWj-3HqPqjXxVhprqs--Jgyl?usp=drive_link)
+### [👉 Clique aqui para acessar as VMS na pasta no Google Drive!](https://drive.google.com/drive/folders/1KK29zer7fWj-3HqPqjXxVhprqs--Jgyl?usp=drive_link)
 
 ## Integrantes
 
@@ -91,27 +91,19 @@ Configuração mínima utilizada em cada máquina virtual:
 
 A documentação detalhada de cada etapa do projeto pode ser acessada [Clicando Aqui!](./passo-a-passo.md).
 
-## Script de Testes
-Os testes foram feitos de forma automatizada com o script [validation.sh](./validation.sh) executados nas VMs.
 
+## Testes e Evidências
+
+Para agilizar e garantir a precisão na auditoria do ambiente, foi desenvolvido e executado o script [validation.sh](./validation.sh). Ele realiza uma varredura automatizada completa, validando tanto os parâmetros locais do sistema (usuários, serviços e rede) quanto a conectividade entre os nós da subrede.
 
 ```bash
 bash validation.sh
 ```
 
-O script cobre testes locais da máquina virtual e de conectividade entre os nós:
+### **Relatório de Testes e Evidências:**
+O detalhamento completo de tudo o que é avaliado por este script, juntamente com o roteiro de testes manuais e os prints de validação de cada VM, estão centralizados no documento unificado de evidências.
 
-- **Rede** - verifica se o IP está na faixa `192.168.26.128/28`, se a máscara é `/28` e se a interface `ens160` está ativa
-- **Hostname** - verifica se o FQDN completo (`hostname -f`) contém o domínio `grupo9.bsi-26-1.maceio.lab` e se o `/etc/hostname` está correto
-- **Usuários** - verifica se os 5 usuários do grupo (`administrador`, `henrique.carvalho`, `andrey.araujo`, `eduardo.calado`, `cirilo.silva`) existem na VM
-- **`/etc/hosts`** - verifica se os 8 IPs da subrede estão mapeados no arquivo
-- **Ping por IP** - envia 1 pacote ICMP para cada um dos 8 IPs da rede e verifica resposta
-- **Ping por hostname e FQDN** - valida a resolução de nomes testando ping pelo hostname curto e pelo FQDN completo de cada VM
-- **SSH** - verifica se a porta 22 está acessível em cada nó da rede
-- **Netplan** - verifica se o arquivo de configuração de rede existe e se o IP é estático
-- **SSH Server local** - verifica se o serviço SSH está ativo na VM
-
-Ao final da execução é exibido um relatório consolidado no terminal com o total de testes que passaram, falharam e avisos gerados.
+👉 **[Clique aqui para acessar o Relatório de Evidências e Testes Manuais](./evidencias.mdd)**
 
 ## Considerações Finais
 

@@ -346,29 +346,6 @@ Dentro do diretótio `/etc/hosts` (*Mesma pasta em que definimos o mapeamento de
 
 # Parte 3: Testes e Evidências
 
-Os testes de configuração e conectividade das VMs foram realizados de forma automatizada. Para isso, foi adicionado ao diretório raiz de cada máquina o script [`validation.sh`](./validation.sh), encarregado de executar testes parametrizados específicos para o **Grupo 9**.
+O detalhamento completo do script de teste automatizado, juntamente com o roteiro de testes manuais e os prints de validação de cada VM estão centralizados no documento unificado de evidências.
 
-O script cobre as seguintes validações:
-
-* **Rede:** Verifica se o endereço IP pertence à faixa `192.168.26.128/28`, se a máscara de sub-rede é `/28` e se a interface de rede `ens160` está ativa.
-* **Hostname:** Valida se o FQDN completo (`hostname -f`) contém o domínio correspondente (`grupo9.bsi-26-1.maceio.lab`) e se o arquivo `/etc/hostname` está configurado corretamente.
-* **Usuários:** Confirma se os 5 usuários mapeados para o grupo existem na VM:
-  * `administrador`
-  * `henrique.carvalho`
-  * `andrey.araujo`
-  * `eduardo.calado`
-  * `cirilo.silva`
-* **Arquivo `/etc/hosts`:** Garante que todos os 8 endereços IP da sub-rede estão devidamente mapeados no arquivo.
-* **Ping por IP:** Envia 1 pacote ICMP para cada um dos 8 IPs da rede para verificar a conectividade direta entre os nós.
-* **Ping por Hostname e FQDN:** Valida a resolução de nomes interna testando o comando `ping` tanto pelo hostname curto quanto pelo FQDN completo de cada VM.
-* **SSH:** Verifica se a porta 22 está aberta e respondendo a conexões em cada nó da rede.
-* **Netplan:** Certifica-se de que o arquivo de configuração do Netplan existe e que o IP configurado é estático.
-* **SSH Server Local:** Confirma se o serviço do servidor SSH (`sshd`) está ativo e em execução na máquina atual.
-
-**Relatório Final**
-
-Ao término da execução, o script imprime um relatório consolidado diretamente no terminal contendo o detalhamento de quais testes passaram, a quantidade exata de sucessos e o total de validações realizadas. Isso viabiliza uma auditoria rápida e minuciosa do estado de conformidade de cada VM.
-
-Abaixo está a saída do relatório de testes em ambiente local, com as 8 VMs executando em um único notebook:
-
-*<p align="center">Figura 17: Resultado do script de teste automatizado para o grupo 9.</p>*![Execução dos testes](./img/tests.gif)
+👉 **[Clique aqui para acessar o Relatório de Evidências e Testes Manuais](./evidencias.mdd)**
