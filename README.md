@@ -103,7 +103,7 @@ bash validation.sh
 ### **Relatório de Testes e Evidências:**
 O detalhamento completo de tudo o que é avaliado por este script, juntamente com o roteiro de testes manuais e os prints de validação de cada VM, estão centralizados no documento unificado de evidências.
 
-👉 **[Clique aqui para acessar o Relatório de Evidências e Testes Manuais](./evidencias.mdd)**
+👉 **[Clique aqui para acessar o Relatório de Evidências e Testes Manuais](./evidencias.md)**
 
 ## Considerações Finais
 
