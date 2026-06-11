@@ -11,8 +11,9 @@ Comandos executados localmente para garantir a integridade dos serviços e usuá
 
 ### 1. Verificação de Usuários Criados
 ```bash
-grep -E 'administrador|henrique.carvalho|andrey.araujo|eduardo.calado|cirilo.silva' /etc/passwd
+cat /etc/passwd
 ```
+*<p align="center">Figura 1: Visualização do diretótio /etc/passwd.</p>*![Visualização do diretótio /etc/passwd](./PC3-VM1_USERS.jpeg)
 
 ### 2. Validação do Endereçamento IP Local
 ```bash
@@ -29,7 +30,7 @@ cat /etc/hosts
 ss -tuln | grep :22
 ```
 
-*<p align="center">Figura 1: Retorno dos testes de validação local (IP, Hostname, FQDN e porta 22).</p>*![Retorno dos testes de validação local (IP, Hostname, FQDN e porta 22](./local.png)
+*<p align="center">Figura 2: Retorno dos testes de validação local (IP, Hostname, FQDN e porta 22).</p>*![Retorno dos testes de validação local (IP, Hostname, FQDN e porta 22](./local.png)
 
 ## Parte 2: Testes de Conectividade (Matriz de Rede)
 
@@ -50,14 +51,14 @@ ping -c 2 g9-pc4-vm1
 ping -c 2 g9-pc4-vm2.grupo9.bsi-26-1.maceio.lab
 ```
 
-*<p align="center">Figura 2: Retorno dos testes de ping por IP, Hostname e FQDN.</p>*![Retorno dos testes de ping por IP, Hostname, FQDN e status da porta 22](./pings.png)
+*<p align="center">Figura 3: Retorno dos testes de ping por IP, Hostname e FQDN.</p>*![Retorno dos testes de ping por IP, Hostname, FQDN e status da porta 22](./PC3-VM1_PING_PC3-VM2_PC4-VM1_PC4-VM2.jpeg)
 
 4. **Teste 4: SSH por IP** (Alvo: VM 1 | Usuário: cirilo.silva)
 ```bash
 ssh cirilo.silva@192.168.26.129
 ```
 
-*<p align="center">Figura 3: Retorno do teste SSH por IP.</p>*![Retorno do teste SSH por IP](./ssh-ip.png)
+*<p align="center">Figura 4: Retorno do teste SSH por IP.</p>*![Retorno do teste SSH por IP](./PC3-VM1_SSH_PC1_VM1.jpeg)
 
 5. **Teste 5: SSH por Hostname** (Alvo: VM 2 | Usuário: andrey.araujo)
 ```bash
