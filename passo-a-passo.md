@@ -371,7 +371,7 @@ network:
       dhcp4: false
       dhcp6: false
       match:
-        macaddress: <Endereço MAC da VM> # troque para o endereço MAC da VM
+        macaddress: 08:00:27:5c:cd:ee
       set-name: ens160
       addresses:
         - 192.168.26.130/28
@@ -424,7 +424,7 @@ network:
       dhcp4: false
       dhcp6: false
       match:
-        macaddress: <Endereço MAC da VM> # troque para o endereço MAC da VM
+        macaddress: 08:00:27:62:06:77
       set-name: ens160
       addresses:
         - 192.168.26.131/28
@@ -477,7 +477,7 @@ network:
       dhcp4: false
       dhcp6: false
       match:
-        macaddress: <Endereço MAC da VM> # troque para o endereço MAC da VM
+        macaddress: 08:00:27:da:80:f9
       set-name: ens160
       addresses:
         - 192.168.26.132/28
@@ -530,7 +530,7 @@ network:
       dhcp4: false
       dhcp6: false
       match:
-        macaddress: <Endereço MAC da VM> # troque para o endereço MAC da VM
+        macaddress: 08:00:27:ed:82:f3
       set-name: ens160
       addresses:
         - 192.168.26.133/28
@@ -583,7 +583,7 @@ network:
       dhcp4: false
       dhcp6: false
       match:
-        macaddress: <Endereço MAC da VM> # troque para o endereço MAC da VM
+        macaddress: 08:00:27:bd:19:3a
       set-name: ens160
       addresses:
         - 192.168.26.134/28
@@ -636,7 +636,7 @@ network:
       dhcp4: false
       dhcp6: false
       match:
-        macaddress: <Endereço MAC da VM> # troque para o endereço MAC da VM
+        macaddress: 08:00:27:ed:16:ff
       set-name: ens160
       addresses:
         - 192.168.26.135/28
@@ -689,7 +689,7 @@ network:
       dhcp4: false
       dhcp6: false
       match:
-        macaddress: <Endereço MAC da VM> # troque para o endereço MAC da VM
+        macaddress: 08:00:27:77:57:51
       set-name: ens160
       addresses:
         - 192.168.26.136/28
