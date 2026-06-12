@@ -13,8 +13,6 @@ Durante a etapa de configuração de instalação, foram estabelecidos os seguin
 
 Além disso, manteve-se ativa a opção de instalação automática dos adicionais de convidado (*Guest Additions*) para otimização de drivers do hipervisor.
 
-*<p align="center">Figura 2: Parametrização das credenciais administrativas de segundo plano, nome de host e domínio da sub-rede do Grupo 9.</p>*![Configuração de credenciais, domínio e adicionais de convidado](./img/etapa-1/user-domain-addConf.png)
-
 #### Requisitos de Memória e Disco para Instalação por ISO
 
 * **Memória RAM:** 2 GB  por VM
@@ -31,15 +29,15 @@ Após a conclusão da instalação e configuração do ambiente, a utilização 
 
 Após a conclusão do assistente de provisionamento, a máquina virtual é exibida no painel de controle do VirtualBox e é inicializada de forma automática:
 
-*<p align="center">Figura 3: Gerenciador do VirtualBox exibindo a VM Matriz criada e configurada, aguardando o início do processo de boot.</p>*![Painel do VirtualBox com a VM Matriz criada](./img/etapa-1/creating-vm.png)
+*<p align="center">Figura 2: Gerenciador do VirtualBox exibindo a VM Matriz criada e configurada, aguardando o início do processo de boot.</p>*![Painel do VirtualBox com a VM Matriz criada](./img/etapa-1/creating-vm.png)
 
 Com a VM em execução, o instalador do Ubuntu Server assume o controle da console, carregando os scripts de inicialização automática via linha de comando (CLI):
 
-*<p align="center">Figura 4: Tela de carregamento do Kernel e execução dos scripts em segundo plano do instalador do Ubuntu Server.</p>*![Boot inicial do instalador via CLI](./img/etapa-1/creating-cli-first.png)
+*<p align="center">Figura 3: Tela de carregamento do Kernel e execução dos scripts em segundo plano do instalador do Ubuntu Server.</p>*![Boot inicial do instalador via CLI](./img/etapa-1/creating-cli-first.png)
 
 Após o término dos procedimentos de instalação e o reboot automático do sistema, o terminal de texto é liberado. O acesso ao console da VM Matriz é validado com sucesso inserindo o usuário administrador e a senha previamente configurados:
 
-*<p align="center">Figura 5: Autenticação realizada com sucesso, exibindo o prompt de comando operativo do usuário admin.</p>*![Tela de login bem-sucedido no Ubuntu Server](./img/etapa-1/created-login.png)
+*<p align="center">Figura 4: Autenticação realizada com sucesso, exibindo o prompt de comando operativo do usuário admin.</p>*![Tela de login bem-sucedido no Ubuntu Server](./img/etapa-1/created-login.png)
 
 ### 1.3 Idioma e Leyout do Teclado e localização
 
@@ -73,7 +71,7 @@ Continue dando OK nas opções restantes até o assistente fechar.
 
 Após o reboot, acesse a VM e teste se o teclado está devidademente configurado com `localectl status` e testando as teclas.
 
-*<p align="center">Figura 6: Saída das configurações de idioma e teclado após execução dos comandos.</p>*![Status de configuração de idioma e teclado](./img/etapa-1/teclado.png)
+*<p align="center">Figura 5: Saída das configurações de idioma e teclado após execução dos comandos.</p>*![Status de configuração de idioma e teclado](./img/etapa-1/teclado.png)
 
 ### 1.4 Atualização de Utilitários e Serviços de Rede
 
@@ -100,7 +98,7 @@ ifconfig
 
 O comando deve exibir as interfaces de rede disponíveis na máquina virtual.
 
-*<p align="center">Figura 7: Saída das configurações de interface de rede disponíveis.</p>*![Interfaces de rede disponível](./img/etapa-1/ifconfig.png)
+*<p align="center">Figura 6: Saída das configurações de interface de rede disponíveis.</p>*![Interfaces de rede disponível](./img/etapa-1/ifconfig.png)
 
 **Justificativa:** Manter o sistema atualizado reduz problemas de compatibilidade e segurança durante o projeto. Além disso, o pacote `net-tools` fornece ferramentas úteis para visualizar e diagnosticar configurações de rede, auxiliando na configuração dos endereços IP, testes de conectividade e validação da comunicação entre as máquinas virtuais.
 
@@ -128,7 +126,7 @@ sudo systemctl status ssh
 
 O resultado deve indicar que o serviço está com o status `active (running)`.
 
-*<p align="center">Figura 8: Saída das configurações do serviço SSH ativo.</p>*![Serviço SSH rodando](./img/etapa-1/ssh.png)
+*<p align="center">Figura 7: Saída das configurações do serviço SSH ativo.</p>*![Serviço SSH rodando](./img/etapa-1/ssh.png)
 
 **Justificativa:** O SSH será utilizado para realizar os testes de acesso remoto exigidos pelo projeto, permitindo a comunicação entre as máquinas virtuais por meio dos usuários criados e dos nomes de host configurados. Além disso, o protocolo SSH possibilita a administração remota segura dos servidores durante a execução e validação do ambiente de rede.
 
@@ -141,22 +139,22 @@ sudo adduser --force-badname andrey.araujo
 sudo adduser --force-badname eduardo.calado
 sudo adduser --force-badname cirilo.silva
 ```
-O parâmetro `--force-badname` é utilizado para que o Ubuntu não reclame do padrão de nomeclatura considerada ruim.*<p align="center">Figura 9: Ubuntu reclamando da convenção de nomes.</p>*![Convenção de nome ruim](./img/etapa-1/reclame_name.png)
+O parâmetro `--force-badname` é utilizado para que o Ubuntu não reclame do padrão de nomeclatura considerada ruim.*<p align="center">Figura 8: Ubuntu reclamando da convenção de nomes.</p>*![Convenção de nome ruim](./img/etapa-1/reclame_name.png)
 
 Todos os usuários foram criados com a senha padrão:`grupo9@2026`
 
-Foi adicionado também privilégios de adminustrador `sudo` aos usuários:
+Foi adicionado também privilégios de administrador `sudo` aos usuários:
 ```bash
-sudo usermod -aG sudo henrique_carvalho
-sudo usermod -aG sudo andrey_araujo
-sudo usermod -aG sudo eduardo_calado
-sudo usermod -aG sudo cirilo_silva
+sudo usermod -aG sudo henrique.carvalho
+sudo usermod -aG sudo andrey.araujo
+sudo usermod -aG sudo eduardo.calado
+sudo usermod -aG sudo cirilo.silva
 ```
-*<p align="center">Figura 10: Exemplo da criação de um usuário.</p>*![Criação do usuário henrique_carvalho com privilégios de administrador](./img/etapa-1/user-crated.png)
+*<p align="center">Figura 9: Exemplo da criação de um usuário.</p>*![Criação do usuário henrique_carvalho com privilégios de administrador](./img/etapa-1/user-crated.png)
 > O comando `id < usuário >` retorna o usuário criado!
 
 É possivel verificar também a pasta dos usuários:
-*<p align="center">Figura 11: Pasta no diretório /home dos usuários criados.</p>*![Criado os 4 usuários pertencentes aos alunos](./img/etapa-1/users.png)
+*<p align="center">Figura 10: Pasta no diretório /home dos usuários criados.</p>*![Criado os 4 usuários pertencentes aos alunos](./img/etapa-1/users.png)
 
 **Justificativa**: O projeto exige que todos os integrantes possuam contas em todas as instâncias virtuais. Ao criá-los na máquina matriz, evitamos a necessidade de rodar o comando adduser 32 vezes no dia da apresentação (4 usuários × 8 VMs).
 
@@ -239,13 +237,13 @@ O arquivo `/etc/hosts` permite associar nomes de máquinas a endereços IP local
 
 Após a instalação completa do sistema operacional e dos serviços necessários para o projeto, foi observado um consumo médio de aproximadamente **205 MB** de memória RAM por máquina virtual. Considerando que os serviços utilizados no ambiente (SSH, configuração de rede e ferramentas de diagnóstico) possuem baixo consumo de recursos, optou-se por reduzir a memória alocada de **2 GB** para **768 MB** por VM. Essa configuração mantém uma margem confortável para a execução das atividades propostas e possibilita a execução simultânea de duas máquinas virtuais por computador, utilizando aproximadamente 1,5 GB de RAM no total.
 
-*<p align="center">Figura 12: Consumo de RAM após instalações e configuração básica.</p>*![Ram usada após intalações básicas](./img/etapa-1/used-ram.png)
+*<p align="center">Figura 11: Consumo de RAM após instalações e configuração básica.</p>*![Ram usada após intalações básicas](./img/etapa-1/used-ram.png)
 
-*<p align="center">Figura 13: Alteração de alocação de memória RAM da VM.</p>*![Alteração de alocação de memória principal](./img/etapa-1/ram-ajuste.png)
+*<p align="center">Figura 12: Alteração de alocação de memória RAM da VM.</p>*![Alteração de alocação de memória principal](./img/etapa-1/ram-ajuste.png)
 
 Também foi necessário alterar o adaptador de rede de **NAT** para **Placa em Modo Bridge** (Adaptador em Ponte).
 
-*<p align="center">Figura 14: Alteração das configurações de adaptador de rede.</p>*![Configurações do adaptador de rede](./img/etapa-1/conf-rede.png)
+*<p align="center">Figura 13: Alteração das configurações de adaptador de rede.</p>*![Configurações do adaptador de rede](./img/etapa-1/conf-rede.png)
 
 **Justificativa**: O modo Bridge conecta a máquina virtual diretamente à rede física do computador hospedeiro, permitindo que ela receba um endereço IP próprio e possa ser acessada por outros dispositivos da mesma rede. Essa configuração facilita os testes de conectividade e acesso remoto via SSH, além de permitir a comunicação entre as máquinas virtuais e outros computadores utilizados durante a apresentação e validação do projeto.
 
@@ -253,7 +251,7 @@ Também foi necessário alterar o adaptador de rede de **NAT** para **Placa em M
 
 Antes de iniciar a clonagem, deve-se habilitar a opção *"Gerar novos endereços MAC para todos os adaptadores de rede"*. Cada máquina virtual precisa possuir um endereço MAC único para evitar conflitos de identificação na rede e garantir o funcionamento correto dos serviços de comunicação.
 
-*<p align="center">Figura 15: Etapa de clonagem das VMs.</p>*![Criação dos clones das VMS](./img/etapa-1/clone.png)
+*<p align="center">Figura 14: Etapa de clonagem das VMs.</p>*![Criação dos clones das VMS](./img/etapa-1/clone.png)
 
 **Justificativa**: A clonagem foi utilizada para acelerar a criação do ambiente do projeto, permitindo reaproveitar uma máquina virtual base já configurada. Após a clonagem, foram realizados apenas os ajustes individuais de hostname, endereço IP e demais configurações específicas de cada servidor.
 
@@ -273,7 +271,7 @@ ip link | grep ether
 
 `grep ether`: É um filtro de texto. Ele varre o que recebeu do pipe e exibe apenas as linhas que possuem a palavra "ether".
 
-*<p align="center">Figura 16: Endereço Mac da VM distribuida pelo VirtualBox.</p>*![Retorno do endereço MAC](./img/etapa-2/mac.png)
+*<p align="center">Figura 15: Endereço Mac da VM distribuida pelo VirtualBox.</p>*![Retorno do endereço MAC](./img/etapa-2/mac.png)
 
 Após identificar o endereço MAC e consultar a tabela de endereçamento do grupo para determinar o IP correspondente à VM, edite o arquivo de configuração da rede:
 
