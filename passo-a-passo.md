@@ -344,6 +344,381 @@ Dentro do diretótio `/etc/hosts` (*Mesma pasta em que definimos o mapeamento de
 172.0.1.1  g9-pc1-vm1.grupo9.bsi-26-1.maceio.lab  g9-pc1-vm1
 ```
 
+### 2.3 Configurações Individuais por VM
+
+Esta seção apresenta os comandos exatos a serem executados em cada VM clonada (do clone 2 ao 8), de forma redundante e completa. Para cada máquina, basta seguir os passos na ordem indicada.
+
+---
+
+#### G9-PC1-VM2 — IP: `192.168.26.130`
+
+**1. Definir o hostname:**
+```bash
+sudo hostnamectl set-hostname g9-pc1-vm2
+hostname   # verifique
+```
+
+**2. Editar o arquivo de configuração de rede:**
+```bash
+sudo nano /etc/netplan/00-installer-config.yaml
+```
+
+Substitua o conteúdo pelo seguinte:
+```yaml
+network:
+  ethernets:
+    enp0s3:
+      dhcp4: false
+      dhcp6: false
+      match:
+        macaddress: <Endereço MAC da VM> # troque para o endereço MAC da VM
+      set-name: ens160
+      addresses:
+        - 192.168.26.130/28
+      routes:
+        - to: default
+          via: 192.168.26.129
+      nameservers:
+        addresses: [8.8.8.8, 8.8.4.4]
+        search: [grupo9.bsi-26-1.maceio.lab]
+  version: 2
+```
+
+**3. Editar o arquivo `/etc/hosts` — linha de loopback local:**
+```bash
+sudo nano /etc/hosts
+```
+
+Altere a linha de identificação local para:
+```
+172.0.1.1  g9-pc1-vm2.grupo9.bsi-26-1.maceio.lab  g9-pc1-vm2
+```
+
+**4. Aplicar as configurações e verificar:**
+```bash
+sudo netplan apply
+ifconfig -a
+hostname -f
+```
+
+---
+
+#### G9-PC2-VM1 — IP: `192.168.26.131`
+
+**1. Definir o hostname:**
+```bash
+sudo hostnamectl set-hostname g9-pc2-vm1
+hostname   # verifique
+```
+
+**2. Editar o arquivo de configuração de rede:**
+```bash
+sudo nano /etc/netplan/00-installer-config.yaml
+```
+
+Substitua o conteúdo pelo seguinte:
+```yaml
+network:
+  ethernets:
+    enp0s3:
+      dhcp4: false
+      dhcp6: false
+      match:
+        macaddress: <Endereço MAC da VM> # troque para o endereço MAC da VM
+      set-name: ens160
+      addresses:
+        - 192.168.26.131/28
+      routes:
+        - to: default
+          via: 192.168.26.129
+      nameservers:
+        addresses: [8.8.8.8, 8.8.4.4]
+        search: [grupo9.bsi-26-1.maceio.lab]
+  version: 2
+```
+
+**3. Editar o arquivo `/etc/hosts` — linha de loopback local:**
+```bash
+sudo nano /etc/hosts
+```
+
+Altere a linha de identificação local para:
+```
+172.0.1.1  g9-pc2-vm1.grupo9.bsi-26-1.maceio.lab  g9-pc2-vm1
+```
+
+**4. Aplicar as configurações e verificar:**
+```bash
+sudo netplan apply
+ifconfig -a
+hostname -f
+```
+
+---
+
+#### G9-PC2-VM2 — IP: `192.168.26.132`
+
+**1. Definir o hostname:**
+```bash
+sudo hostnamectl set-hostname g9-pc2-vm2
+hostname   # verifique
+```
+
+**2. Editar o arquivo de configuração de rede:**
+```bash
+sudo nano /etc/netplan/00-installer-config.yaml
+```
+
+Substitua o conteúdo pelo seguinte:
+```yaml
+network:
+  ethernets:
+    enp0s3:
+      dhcp4: false
+      dhcp6: false
+      match:
+        macaddress: <Endereço MAC da VM> # troque para o endereço MAC da VM
+      set-name: ens160
+      addresses:
+        - 192.168.26.132/28
+      routes:
+        - to: default
+          via: 192.168.26.129
+      nameservers:
+        addresses: [8.8.8.8, 8.8.4.4]
+        search: [grupo9.bsi-26-1.maceio.lab]
+  version: 2
+```
+
+**3. Editar o arquivo `/etc/hosts` — linha de loopback local:**
+```bash
+sudo nano /etc/hosts
+```
+
+Altere a linha de identificação local para:
+```
+172.0.1.1  g9-pc2-vm2.grupo9.bsi-26-1.maceio.lab  g9-pc2-vm2
+```
+
+**4. Aplicar as configurações e verificar:**
+```bash
+sudo netplan apply
+ifconfig -a
+hostname -f
+```
+
+---
+
+#### G9-PC3-VM1 — IP: `192.168.26.133`
+
+**1. Definir o hostname:**
+```bash
+sudo hostnamectl set-hostname g9-pc3-vm1
+hostname   # verifique
+```
+
+**2. Editar o arquivo de configuração de rede:**
+```bash
+sudo nano /etc/netplan/00-installer-config.yaml
+```
+
+Substitua o conteúdo pelo seguinte:
+```yaml
+network:
+  ethernets:
+    enp0s3:
+      dhcp4: false
+      dhcp6: false
+      match:
+        macaddress: <Endereço MAC da VM> # troque para o endereço MAC da VM
+      set-name: ens160
+      addresses:
+        - 192.168.26.133/28
+      routes:
+        - to: default
+          via: 192.168.26.129
+      nameservers:
+        addresses: [8.8.8.8, 8.8.4.4]
+        search: [grupo9.bsi-26-1.maceio.lab]
+  version: 2
+```
+
+**3. Editar o arquivo `/etc/hosts` — linha de loopback local:**
+```bash
+sudo nano /etc/hosts
+```
+
+Altere a linha de identificação local para:
+```
+172.0.1.1  g9-pc3-vm1.grupo9.bsi-26-1.maceio.lab  g9-pc3-vm1
+```
+
+**4. Aplicar as configurações e verificar:**
+```bash
+sudo netplan apply
+ifconfig -a
+hostname -f
+```
+
+---
+
+#### G9-PC3-VM2 — IP: `192.168.26.134`
+
+**1. Definir o hostname:**
+```bash
+sudo hostnamectl set-hostname g9-pc3-vm2
+hostname   # verifique
+```
+
+**2. Editar o arquivo de configuração de rede:**
+```bash
+sudo nano /etc/netplan/00-installer-config.yaml
+```
+
+Substitua o conteúdo pelo seguinte:
+```yaml
+network:
+  ethernets:
+    enp0s3:
+      dhcp4: false
+      dhcp6: false
+      match:
+        macaddress: <Endereço MAC da VM> # troque para o endereço MAC da VM
+      set-name: ens160
+      addresses:
+        - 192.168.26.134/28
+      routes:
+        - to: default
+          via: 192.168.26.129
+      nameservers:
+        addresses: [8.8.8.8, 8.8.4.4]
+        search: [grupo9.bsi-26-1.maceio.lab]
+  version: 2
+```
+
+**3. Editar o arquivo `/etc/hosts` — linha de loopback local:**
+```bash
+sudo nano /etc/hosts
+```
+
+Altere a linha de identificação local para:
+```
+172.0.1.1  g9-pc3-vm2.grupo9.bsi-26-1.maceio.lab  g9-pc3-vm2
+```
+
+**4. Aplicar as configurações e verificar:**
+```bash
+sudo netplan apply
+ifconfig -a
+hostname -f
+```
+
+---
+
+#### G9-PC4-VM1 — IP: `192.168.26.135`
+
+**1. Definir o hostname:**
+```bash
+sudo hostnamectl set-hostname g9-pc4-vm1
+hostname   # verifique
+```
+
+**2. Editar o arquivo de configuração de rede:**
+```bash
+sudo nano /etc/netplan/00-installer-config.yaml
+```
+
+Substitua o conteúdo pelo seguinte:
+```yaml
+network:
+  ethernets:
+    enp0s3:
+      dhcp4: false
+      dhcp6: false
+      match:
+        macaddress: <Endereço MAC da VM> # troque para o endereço MAC da VM
+      set-name: ens160
+      addresses:
+        - 192.168.26.135/28
+      routes:
+        - to: default
+          via: 192.168.26.129
+      nameservers:
+        addresses: [8.8.8.8, 8.8.4.4]
+        search: [grupo9.bsi-26-1.maceio.lab]
+  version: 2
+```
+
+**3. Editar o arquivo `/etc/hosts` — linha de loopback local:**
+```bash
+sudo nano /etc/hosts
+```
+
+Altere a linha de identificação local para:
+```
+172.0.1.1  g9-pc4-vm1.grupo9.bsi-26-1.maceio.lab  g9-pc4-vm1
+```
+
+**4. Aplicar as configurações e verificar:**
+```bash
+sudo netplan apply
+ifconfig -a
+hostname -f
+```
+
+---
+
+#### G9-PC4-VM2 — IP: `192.168.26.136`
+
+**1. Definir o hostname:**
+```bash
+sudo hostnamectl set-hostname g9-pc4-vm2
+hostname   # verifique
+```
+
+**2. Editar o arquivo de configuração de rede:**
+```bash
+sudo nano /etc/netplan/00-installer-config.yaml
+```
+
+Substitua o conteúdo pelo seguinte:
+```yaml
+network:
+  ethernets:
+    enp0s3:
+      dhcp4: false
+      dhcp6: false
+      match:
+        macaddress: <Endereço MAC da VM> # troque para o endereço MAC da VM
+      set-name: ens160
+      addresses:
+        - 192.168.26.136/28
+      routes:
+        - to: default
+          via: 192.168.26.129
+      nameservers:
+        addresses: [8.8.8.8, 8.8.4.4]
+        search: [grupo9.bsi-26-1.maceio.lab]
+  version: 2
+```
+
+**3. Editar o arquivo `/etc/hosts` — linha de loopback local:**
+```bash
+sudo nano /etc/hosts
+```
+
+Altere a linha de identificação local para:
+```
+172.0.1.1  g9-pc4-vm2.grupo9.bsi-26-1.maceio.lab  g9-pc4-vm2
+```
+
+**4. Aplicar as configurações e verificar:**
+```bash
+sudo netplan apply
+ifconfig -a
+hostname -f
+```
+
 # Parte 3: Testes e Evidências
 
 O detalhamento completo do script de teste automatizado, juntamente com o roteiro de testes manuais e os prints de validação de cada VM estão centralizados no documento unificado de evidências.
