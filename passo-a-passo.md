@@ -721,4 +721,4 @@ hostname -f
 
 O detalhamento completo do script de teste automatizado, juntamente com o roteiro de testes manuais e os prints de validação de cada VM estão centralizados no documento unificado de evidências.
 
-👉 **[Clique aqui para acessar o Relatório de Evidências e Testes Manuais](./evidencias.mdd)**
+👉 **[Clique aqui para acessar o Relatório de Evidências e Testes Manuais](./evidencias.md)**
